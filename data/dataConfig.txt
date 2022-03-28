@@ -1,11 +1,3 @@
-
- 9999| Amin
- 5555| Webook
- 4321| gois
- 31111| Webook
- 6666| gois
- | 
- 1233444| Iswan
- | 
- 1111| Tim Webook.id
- 1111| Ahmad
+NIK|Nama
+111|Gois
+222|Ahmad
