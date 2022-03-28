@@ -5,7 +5,7 @@
         </div>
         <div class="card-body">
             <div class="container">
-                <form action="<?= base_url()?>isi_catatan/simpan_data" method="post">
+                <form action="<?= base_url() ?>isi_catatan/simpan_data" method="post">
                     <div class="mb-3 row">
                         <label for="tanggal" class="col-md-3 col-form-label">Tanggal</label>
                         <div class="col-md-6">
@@ -26,8 +26,11 @@
                     </div>
                     <div class="mb-3 row">
                         <label for="suhu" class="col-md-3 col-form-label">Suhu Tubuh</label>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" name="suhu" id="suhu" required>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" name="suhu" id="suhu" value="" required>
+                        </div>
+                        <div class="col-md-1">
+                            <h6>&deg C</h6>
                         </div>
                     </div>
                     <div class="m-4 row justify-content-end">

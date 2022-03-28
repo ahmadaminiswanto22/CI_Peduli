@@ -53,9 +53,8 @@ class Login extends CI_Controller
         $file = file('data/dataConfig.txt', FILE_IGNORE_NEW_LINES);
         if (in_array($format, $file)) {
             //jika data ada di file
-            // session_start();
-            // $_SESSION['nik'] = $nik;
-            // $_SESSION['nama'] = $nama;
+            $_SESSION['nik'] = $nik;
+            $_SESSION['nama'] = $nama;
             $data_session = array(
                 'nik' => $nik,
                 'nama' => $nama,

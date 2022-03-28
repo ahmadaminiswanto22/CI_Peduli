@@ -11,15 +11,13 @@ date_default_timezone_set('Asia/Jakarta');
             <div class="container">
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <a class="btn btn-primary btn-sm" href="<?=base_url()?>isi_catatan" role="button">Isi Catatan
+                        <a class="btn btn-primary btn-sm" href="<?= base_url() ?>isi_catatan" role="button">Isi Catatan
                             Perjalanan <i class="fas fa-plus"></i></a>
                     </div>
                     <div class="col-md-6 text-end">
-                        <a target="_blank" class="btn btn-info btn-sm justify-content-end" href="cetakExcelBuku.php"
-                            role="button">Cetak Excel <i class="fas fa-print"></i></a>
+                        <a target="_blank" class="btn btn-info btn-sm justify-content-end" href="cetakExcelBuku.php" role="button">Cetak Excel <i class="fas fa-print"></i></a>
 
-                        <a class="btn btn-secondary btn-sm" href="#" role="button">Cetak PDF <i
-                                class="fas fa-print"></i></a>
+                        <a class="btn btn-secondary btn-sm" href="#" role="button">Cetak PDF <i class="fas fa-print"></i></a>
                     </div>
                 </div>
 
@@ -35,47 +33,53 @@ date_default_timezone_set('Asia/Jakarta');
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- <tr>
-                        <td>1</td>
-                        <td><?=date('d-m-Y');?></td>
-                        <td><?=date('H:i:s');?></td>
-                        <td>Bekasi</td>
-                        <td>36 C</td>
-                    </tr> -->
                     <?php
-                    $txt_file    = file_get_contents('data/dataPerjalanan.txt');
-                    $rows        = explode("\n", $txt_file);
-                    array_shift($rows);
-                    // echo '<h3>Data Mahasiswa</h3>';
-                    // echo '<a href="form.php">Tambah Data</a></br></br>';
-                    $no=1;
+                    // $txt_file    = file_get_contents('data/dataPerjalanan.txt');
+                    // $rows        = explode("\n", $txt_file);
+                    // array_shift($rows);
+                    // $no=1;
+                    // foreach($rows as $row => $data)
+                    // {
 
-                    foreach($rows as $row => $data)
-                    {
+                    //         // Explode digunakan untuk memisahkan Item Data dariPemisah |, array pada PHP dimulaipada index ke-0
+                    //         $row_data = explode('|', $data);
 
-                            // Explode digunakan untuk memisahkan Item Data dariPemisah |, array pada PHP dimulaipada index ke-0
-                            $row_data = explode('|', $data);
+                    //         $info[$row]['tanggal']           = $row_data[0];
+                    //         $info[$row]['waktu']         = $row_data[1];
+                    //         $info[$row]['lokasi']          = $row_data[2];
+                    //         $info[$row]['suhu']      = $row_data[3];
 
-                            $info[$row]['tanggal']           = $row_data[0];
-                            $info[$row]['waktu']         = $row_data[1];
-                            $info[$row]['lokasi']          = $row_data[2];
-                            $info[$row]['suhu']      = $row_data[3];
-                    
+                    //new tampil data
+                    $no = 1;
+                    $data = file('data/dataPerjalanan.txt', FILE_IGNORE_NEW_LINES);
+                    $user = $_SESSION['nik'] . "|" . $_SESSION['nama'];
+                    foreach ($data as $value) {
+                        $pecah = explode("|", $value);
+                        @$key = $pecah['0'] . "|" . $pecah['1'];
+                        if ($key == $user) {
                     ?>
-                    <!-- // Menampilkan Data -->
-                    <tr>
-                        <td><?= $no++; ?></td>
-                        <td><?= $info[$row]['tanggal']; ?></td>
-                        <td><?= $info[$row]['waktu']; ?></td>
-                        <td><?= $info[$row]['lokasi']; ?></td>
-                        <td><?= $info[$row]['suhu']; ?>&deg C</td>
-                    </tr>
-                    <?php } ?>
+                            <!-- // Menampilkan Data -->
+                            <!-- <tr>
+                                <td> $no++; ?></td>
+                                <td> $info[$row]['tanggal']; ?></td>
+                                <td> $info[$row]['waktu']; ?></td>
+                                <td> $info[$row]['lokasi']; ?></td>
+                                <td> $info[$row]['suhu']; ?>&deg C</td>
+                            </tr> -->
+                            <tr>
+                                <td><?= $no++; ?></td>
+                                <td><?= $pecah['2']; ?></td>
+                                <td><?= $pecah['3']; ?></td>
+                                <td><?= $pecah['4']; ?></td>
+                                <td><?= $pecah['5']; ?>&deg C</td>
+                            </tr>
+                    <?php }
+                    } ?>
                 </tbody>
                 <script>
-                $(document).ready(function() {
-                    $('#example').DataTable();
-                });
+                    $(document).ready(function() {
+                        $('#example').DataTable();
+                    });
                 </script>
             </table>
         </div>
