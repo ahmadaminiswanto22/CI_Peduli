@@ -70,7 +70,7 @@ class Login extends CI_Controller
         <?php
         } else {
         ?>
-            //jika data tidak ada di file
+            <!-- //jika data tidak ada di file -->
             <script>
                 alert('NIK dan Nama Salah!!');
                 window.location.assign('<?= base_url() ?>login');
