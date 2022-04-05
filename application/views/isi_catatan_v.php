@@ -35,8 +35,8 @@
                     </div>
                     <div class="m-4 row justify-content-end">
                         <div class="col-md-5">
-                            <input class="btn btn-primary" type="submit" name="submit" value="Submit">
-                            <input class="btn btn-primary" type="reset" value="Reset">
+                            <input class="btn btn-primary" type="submit" name="submit" value="Simpan">
+                            <input class="btn btn-warning" type="reset" value="Reset">
                         </div>
                     </div>
                 </form>
