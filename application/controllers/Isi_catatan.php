@@ -7,6 +7,7 @@ class Isi_catatan extends CI_Controller
     {
         parent::__construct();
         $this->load->library('form_validation');
+        error_reporting(0);
     }
     function index()
     {
@@ -50,8 +51,9 @@ class Isi_catatan extends CI_Controller
         $jam = $this->input->post('jam');
         $lokasi = $this->input->post('lokasi');
         $suhu = $this->input->post('suhu');
+        $id = rand(0, 1000000);
 
-        $data = "\n$nik|$nama|$tanggal| $jam| $lokasi| $suhu";
+        $data = "\n$id|$nik|$nama|$tanggal|$jam|$lokasi|$suhu";
 
         $file = fopen('data/dataPerjalanan.txt', 'a');
         fwrite($file, $data);
@@ -61,6 +63,60 @@ class Isi_catatan extends CI_Controller
 ?>
         <script>
             alert('Data Berhasil Disimpan');
+            window.location.assign('<?= base_url() ?>data_perjalanan');
+        </script>
+    <?php
+    }
+    function edit_catatan()
+    {
+        $nik = $_SESSION['nik'];
+        $nama = $_SESSION['nama'];
+        $tanggal = $this->input->post('tanggal');
+        $jam = $this->input->post('jam');
+        $lokasi = $this->input->post('lokasi');
+        $suhu = $this->input->post('suhu');
+        $id = $this->input->post('id');
+
+        $format = "\n$id|$nik|$nama|$tanggal|$jam|$lokasi|$suhu";
+        $no = 0;
+        $data = file('data/dataPerjalanan.txt', FILE_IGNORE_NEW_LINES);
+        foreach ($data as $value) {
+            $no++;
+            $pecah = explode("|", $value);
+            if ($pecah['0'] == $id) {
+                $line = $no - 1; //mencari urutan baris ke n
+            }
+        }
+        $data[$line] = $format;
+        $data = implode("\n", $data);
+        file_put_contents('data/dataPerjalanan.txt', $data);
+    ?>
+        <script>
+            alert('Data Berhasil Diedit');
+            window.location.assign('<?= base_url() ?>data_perjalanan');
+        </script>
+    <?php
+    }
+    function hapus_data()
+    {
+        $id = $this->input->get('id');
+
+        $no = 0;
+        $data = file('data/dataPerjalanan.txt', FILE_IGNORE_NEW_LINES);
+        foreach ($data as $value) {
+            $no++;
+            $pecah = explode("|", $value);
+            if ($pecah['0'] == $id) {
+                $line = $no - 1; //mencari urutan baris ke n
+            }
+        }
+
+        $buka_file = file('data/dataPerjalanan.txt'); //membaca isi file
+        unset($buka_file[$line]);
+        file_put_contents('data/dataPerjalanan.txt', implode("", $buka_file));
+    ?>
+        <script>
+            alert('Data Berhasil Dihapus');
             window.location.assign('<?= base_url() ?>data_perjalanan');
         </script>
 <?php

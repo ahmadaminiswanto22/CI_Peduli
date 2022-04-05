@@ -1,4 +1,7 @@
+ID|NIK|Nama|Tanggal|Jam|Lokasi|Suhu
 
-111|Gois|2022-03-28| 15:41| Bekasi Timur| 36
-222|Ahmad|2022-03-21| 16:00| Bekasi| 37
-222|Ahmad|2022-03-23| 16:01| Bekasi Timur| 36
+420950|111|Gois|2022-04-05|13:20|Bekasi Barat|37
+
+177372|111|Gois|2022-03-31|13:20|Bekasi Timur|36
+458448|111|Gois|2022-04-05|09:58|Bekasi Selatan|37.5
+246388|222|Ahmad|2022-04-05|10:34|Jakarta|37.5
