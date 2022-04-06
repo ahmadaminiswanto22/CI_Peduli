@@ -1,3 +1,8 @@
 NIK|Nama
 111|Gois
 222|Ahmad
+123|ardy
+12345|ram
+1234|as
+234|ulil
+000|ulil
